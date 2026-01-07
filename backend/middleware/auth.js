@@ -4,21 +4,27 @@ const auth = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "No token provided" });
+    return res.status(401).json({ message: "Authentication token missing" });
   }
 
   const token = authHeader.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
     req.user = {
       id: decoded.id,
       role: decoded.role,
     };
+
     next();
   } catch (err) {
-    console.error("Auth middleware error:", err.message);
-    return res.status(401).json({ message: "Invalid or expired token" });
+    if (err.name === "TokenExpiredError") {
+      return res
+        .status(401)
+        .json({ message: "Access token expired. Please refresh token." });
+    }
+    return res.status(401).json({ message: "Invalid access token" });
   }
 };
 

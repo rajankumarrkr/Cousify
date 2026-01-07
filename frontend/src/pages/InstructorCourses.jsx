@@ -87,7 +87,7 @@ const InstructorCourses = () => {
               name="title"
               value={form.title}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded bg-slate-950 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 text-slate-50 rounded bg-slate-950 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Course title"
             />
           </div>
@@ -97,7 +97,7 @@ const InstructorCourses = () => {
               name="description"
               value={form.description}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded bg-slate-950 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[80px]"
+              className="w-full px-3 py-2 rounded text-slate-50 bg-slate-950 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[80px]"
               placeholder="Short course description"
             />
           </div>
