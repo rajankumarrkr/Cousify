@@ -36,7 +36,7 @@ const Footer = () => {
             <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
             <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
               <li>support@coursify.com</li>
-              <li>+1 (555) 123-4567</li>
+              <li>9815154045</li>
               <li>123 Education Lane, Tech City</li>
             </ul>
           </div>
