@@ -2,106 +2,55 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="border-t bg-slate-950 text-slate-300">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 md:flex-row md:items-start md:justify-between">
-        {/* Brand + tagline */}
-        <div className="max-w-sm">
-          <h2 className="text-lg font-semibold text-white">Coursify</h2>
-          <p className="mt-2 text-sm text-slate-400">
-            Secure e‑learning platform with JWT authentication, role‑based access
-            and modern UI for students & instructors.
-          </p>
-        </div>
+    <footer className="bg-white dark:bg-slate-950 border-t border-gray-200 dark:border-slate-800 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div className="col-span-1 md:col-span-1">
+            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 mb-4">
+              Coursify
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+              Empowering students and instructors with a seamless, secure, and modern learning management experience.
+            </p>
+          </div>
 
-        {/* Quick links */}
-        <div className="flex flex-1 flex-wrap gap-10 text-sm">
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-              Platform
-            </h3>
-            <ul className="mt-3 space-y-2">
-              <li>
-                <a href="#courses" className="hover:text-white">
-                  Browse courses
-                </a>
-              </li>
-              <li>
-                <a href="#instructors" className="hover:text-white">
-                  Become an instructor
-                </a>
-              </li>
-              <li>
-                <a href="#pricing" className="hover:text-white">
-                  Pricing
-                </a>
-              </li>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Platform</h3>
+            <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Browse Courses</a></li>
+              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Instructor Portal</a></li>
+              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Student Dashboard</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-              Security
-            </h3>
-            <ul className="mt-3 space-y-2">
-              <li>JWT authentication</li>
-              <li>Role based access</li>
-              <li>Rate limiting</li>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Support</h3>
+            <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Help Center</a></li>
+              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-              Support
-            </h3>
-            <ul className="mt-3 space-y-2">
-              <li>
-                <a href="#faq" className="hover:text-white">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-white">
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a href="#docs" className="hover:text-white">
-                  Documentation
-                </a>
-              </li>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Contact</h3>
+            <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+              <li>support@coursify.com</li>
+              <li>+1 (555) 123-4567</li>
+              <li>123 Education Lane, Tech City</li>
             </ul>
           </div>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-slate-800">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-4 text-xs text-slate-500 md:flex-row">
-          <p>
+        <div className="pt-8 border-t border-gray-100 dark:border-slate-900 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-gray-500 text-center md:text-left">
             © {new Date().getFullYear()} Coursify. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
-            <a
-              href="#"
-              className="hover:text-white"
-              aria-label="Github"
-            >
-              <FaGithub size={16} />
-            </a>
-            <a
-              href="#"
-              className="hover:text-white"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin size={16} />
-            </a>
-            <a
-              href="#"
-              className="hover:text-white"
-              aria-label="Twitter"
-            >
-              <FaTwitter size={16} />
-            </a>
+          <div className="flex items-center gap-6 text-gray-400">
+            {/* Social icons placeholders if needed, replacing react-icons */}
+            <a href="#" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Twitter</a>
+            <a href="#" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">LinkedIn</a>
+            <a href="#" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">GitHub</a>
           </div>
         </div>
       </div>

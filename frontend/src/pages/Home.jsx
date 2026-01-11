@@ -1,221 +1,213 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { motion } from "framer-motion";
+import { BookOpen, Shield, Users, CheckCircle, ArrowRight, Zap, Award, Globe } from "lucide-react";
 
 const Home = () => {
-  const { user } = useAuth();
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
-    <main className="space-y-10">
-      {/* Top hero banner */}
-      <section className="rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 text-slate-50 px-6 py-6 md:px-8 md:py-7 shadow-sm">
-        <div className="grid gap-6 md:grid-cols-2 items-center">
-          {/* Left: text */}
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-2">
-              COUSIFY · LEARN & TEACH
-            </p>
-            <h1 className="text-3xl md:text-4xl font-semibold leading-tight mb-3">
-              Unlock your potential.
-              <br />
-              Learn & teach online.
-            </h1>
-            <p className="text-sm md:text-base text-sky-100/90 max-w-lg mb-4">
-              A modern learning platform where students discover courses and
-              instructors share their knowledge — built with a secure MERN + JWT
-              backend.
-            </p>
+    <div className="relative overflow-hidden w-full">
+      {/* Background Gradients */}
+      <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-indigo-50/50 to-transparent dark:from-indigo-950/20 -z-10" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/20 dark:bg-purple-900/10 blur-[100px] rounded-full -z-10 translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute top-[40%] left-0 w-[300px] h-[300px] bg-blue-200/20 dark:bg-blue-900/10 blur-[80px] rounded-full -z-10 -translate-x-1/2" />
 
-            <div className="flex flex-wrap items-center gap-3">
-              {!user && (
-                <>
-                  <Link
-                    to="/register"
-                    className="px-4 py-2 rounded-full bg-white text-sky-600 text-sm font-medium shadow-sm hover:bg-slate-100"
-                  >
-                    Get started free
-                  </Link>
-                  <Link
-                    to="/courses"
-                    className="text-sm text-sky-50/90 hover:text-white"
-                  >
-                    Browse courses
-                  </Link>
-                </>
-              )}
-              {user && (
+      {/* Hero Section */}
+      <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-32 px-4 max-w-7xl mx-auto flex flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 rounded-full bg-white dark:bg-slate-800 border border-indigo-100 dark:border-indigo-900/50 px-4 py-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 shadow-sm mb-8"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+          </span>
+          The Future of Campus Learning
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white max-w-4xl mb-6"
+        >
+          Master your subjects with{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">
+            Coursify
+          </span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-10 leading-relaxed"
+        >
+          A seamless platform connecting students and instructors.
+          Manage courses, track progress, and elevate your educational journey with our modern, secure application.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center gap-4"
+        >
+          <Link
+            to="/courses"
+            className="px-8 py-4 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/30 active:scale-95 flex items-center gap-2"
+          >
+            Explore Courses <ArrowRight size={20} />
+          </Link>
+          <Link
+            to="/register"
+            className="px-8 py-4 rounded-xl bg-white dark:bg-slate-800 text-gray-900 dark:text-white font-semibold border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 transition-all active:scale-95"
+          >
+            Create Account
+          </Link>
+        </motion.div>
+      </section>
+
+      {/* Stats/Showcase Section */}
+      <section className="py-10 border-y border-gray-100 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="space-y-1">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white">500+</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider font-medium">Courses</p>
+          </div>
+          <div className="space-y-1">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white">10k+</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider font-medium">Students</p>
+          </div>
+          <div className="space-y-1">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white">50+</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider font-medium">Instructors</p>
+          </div>
+          <div className="space-y-1">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white">99%</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider font-medium">Satisfaction</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-24 px-4 bg-gray-50 dark:bg-slate-900/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Everything you need to excel
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Powerful features designed for both students and instructors to make online learning effective and engaging.
+            </p>
+          </div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                icon: <Zap className="w-8 h-8 text-amber-500" />,
+                title: "Fast & Interactive",
+                desc: "Experience lightning fast navigation and real-time updates for a smooth learning process.",
+              },
+              {
+                icon: <Shield className="w-8 h-8 text-emerald-500" />,
+                title: "Secure & Reliable",
+                desc: "Built with industry-standard JWT authentication and role-based access control protecting your data.",
+              },
+              {
+                icon: <Globe className="w-8 h-8 text-blue-500" />,
+                title: "Accessible Anywhere",
+                desc: "Access your courses from any device, anytime. Responsive design helps you learn on the go.",
+              },
+            ].map((feature, i) => (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-gray-100 dark:border-slate-700"
+              >
+                <div className="mb-4 bg-gray-50 dark:bg-slate-700/50 w-16 h-16 rounded-xl flex items-center justify-center">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {feature.desc}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Role Selection Section */}
+      <section className="py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="relative group overflow-hidden rounded-3xl bg-indigo-600 p-10 text-white shadow-2xl shadow-indigo-500/20">
+              <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-colors" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center mb-6">
+                  <Users className="text-white" size={24} />
+                </div>
+                <h3 className="text-3xl font-bold mb-4">For Students</h3>
+                <ul className="space-y-3 mb-8 text-indigo-100">
+                  <li className="flex items-center gap-2"><CheckCircle size={18} /> Browse hundreds of courses</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={18} /> Track your progress in real-time</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={18} /> Interactive learning material</li>
+                </ul>
                 <Link
-                  to={
-                    user.role === "instructor"
-                      ? "/instructor/courses"
-                      : "/courses"
-                  }
-                  className="px-4 py-2 rounded-full bg-white text-sky-600 text-sm font-medium shadow-sm hover:bg-slate-100"
+                  to="/register?role=student"
+                  className="inline-block px-6 py-3 bg-white text-indigo-600 font-bold rounded-xl hover:bg-indigo-50 transition-colors"
                 >
-                  Go to your dashboard
+                  Join as Student
                 </Link>
-              )}
+              </div>
             </div>
-          </div>
 
-          {/* Right: simple illustration-style block */}
-          <div className="hidden md:block">
-            <div className="mx-auto max-w-sm rounded-xl bg-sky-50/20 backdrop-blur border border-sky-100/50 p-4 shadow-sm">
-              <div className="flex items-center justify-between mb-3">
-                <div>
-                  <p className="text-xs text-sky-100/90">Sample class</p>
-                  <p className="text-sm font-semibold">Intro to JavaScript</p>
+            <div className="relative group overflow-hidden rounded-3xl bg-gray-900 dark:bg-slate-800 p-10 text-white shadow-2xl shadow-gray-900/20">
+              <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-colors" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center mb-6">
+                  <Award className="text-white" size={24} />
                 </div>
-                <span className="text-[11px] px-2 py-1 rounded-full bg-emerald-400 text-emerald-950 font-medium">
-                  Live
-                </span>
+                <h3 className="text-3xl font-bold mb-4">For Instructors</h3>
+                <ul className="space-y-3 mb-8 text-gray-400">
+                  <li className="flex items-center gap-2"><CheckCircle size={18} /> Create and manage courses easily</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={18} /> Track student enrollment</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={18} /> Build your personal brand</li>
+                </ul>
+                <Link
+                  to="/register?role=instructor"
+                  className="inline-block px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-xl transition-colors"
+                >
+                  Start Teaching
+                </Link>
               </div>
-              <div className="rounded-lg bg-sky-900/40 p-3 text-[11px] font-mono">
-                <p className="text-sky-100/90">// Live coding with Cousify</p>
-                <p>
-                  <span className="text-emerald-300">console</span>.
-                  <span className="text-amber-300">log</span>(
-                  <span className="text-sky-100">
-                    "Welcome to your first class!"
-                  </span>
-                  );
-                </p>
-              </div>
-              <p className="mt-3 text-[11px] text-sky-100/90">
-                Students enroll, instructors manage courses — all in one place.
-              </p>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Middle: Students vs Instructors (modern cards) */}
-      <section className="grid gap-6 md:grid-cols-2">
-        {/* STUDENTS card */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-6 text-slate-900 flex flex-col justify-between">
-          <div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-sky-500 mb-1">
-              STUDENTS
-            </p>
-            <h2 className="text-lg md:text-xl font-semibold mb-2 text-slate-900">
-              Learn from real instructors, step by step.
-            </h2>
-
-            <p className="text-xs md:text-sm text-slate-600 mb-4">
-              Join practical programming courses, follow real‑world examples and
-              keep all your enrolled classes in one place.
-            </p>
-
-            {/* Small course chips row */}
-            <div className="flex flex-wrap gap-3 mb-3">
-              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs shadow-sm">
-                <div className="h-8 w-8 rounded-md bg-sky-100 flex items-center justify-center text-[11px] font-semibold text-sky-600">
-                  JS
-                </div>
-                <div>
-                  <p className="font-medium text-slate-800 text-xs">
-                    JavaScript Basics
-                  </p>
-                  <p className="text-[10px] text-slate-500">
-                    Learn by building small apps.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs shadow-sm">
-                <div className="h-8 w-8 rounded-md bg-emerald-100 flex items-center justify-center text-[11px] font-semibold text-emerald-700">
-                  FS
-                </div>
-                <div>
-                  <p className="font-medium text-slate-800 text-xs">
-                    Full‑stack course
-                  </p>
-                  <p className="text-[10px] text-slate-500">
-                    Frontend + backend practice.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2 mt-2">
-            <Link
-              to="/courses"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-sky-500 hover:bg-sky-400 text-xs md:text-sm font-medium text-white shadow-sm"
-            >
-              Browse courses
-            </Link>
-            <span className="text-[11px] text-slate-500">
-              Sign up, enroll and start learning in minutes.
-            </span>
-          </div>
-        </div>
-
-        {/* INSTRUCTORS card */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 md:p-6 text-slate-900 flex flex-col justify-between">
-          <div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-emerald-500 mb-1">
-              INSTRUCTORS
-            </p>
-            <h2 className="text-lg md:text-xl font-semibold mb-2">
-              Run your own online classroom.
-            </h2>
-            <p className="text-xs md:text-sm text-slate-600 mb-4">
-              Create clear course pages, manage content and track how many
-              students are learning from you — all in one simple dashboard.
-            </p>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs shadow-sm">
-                <p className="font-medium text-slate-800 mb-1">
-                  Create real courses
-                </p>
-                <p className="text-[11px] text-slate-500">
-                  Add course titles and descriptions just like a real platform.
-                </p>
-              </div>
-              <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs shadow-sm">
-                <p className="font-medium text-slate-800 mb-1">
-                  See your learners
-                </p>
-                <p className="text-[11px] text-slate-500">
-                  Know how many students enrolled in each course.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2 mt-3">
-            <Link
-              to="/register"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-emerald-500 hover:bg-emerald-400 text-xs md:text-sm font-medium text-white shadow-sm"
-            >
-              Start teaching
-            </Link>
-            <span className="text-[11px] text-slate-500">
-              Use Cousify like a real course platform for your classes.
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom tech strip */}
-      <section className="rounded-2xl border border-slate-200 bg-white p-4 text-xs text-slate-700 flex flex-wrap gap-3 md:items-center md:justify-between">
-        <p>
-          Cousify runs on <span className="font-semibold">MERN + JWT</span> with
-          role‑based access control for students and instructors.
-        </p>
-        <div className="flex flex-wrap gap-2">
-          <span className="px-2 py-1 rounded-full bg-slate-100 border border-slate-200">
-            React · Vite · Tailwind
-          </span>
-          <span className="px-2 py-1 rounded-full bg-slate-100 border border-slate-200">
-            Node · Express · MongoDB
-          </span>
-          <span className="px-2 py-1 rounded-full bg-slate-100 border border-slate-200">
-            JWT authentication
-          </span>
-        </div>
-      </section>
-    </main>
+    </div>
   );
 };
 

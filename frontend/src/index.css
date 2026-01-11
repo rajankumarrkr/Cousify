@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  @apply bg-slate-950 text-slate-50;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", sans-serif;
+  @apply bg-gray-50 text-gray-900 antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }

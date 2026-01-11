@@ -6,25 +6,26 @@ const router = express.Router();
 
 // ===== Rate limiters =====
 const registerLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000,
-  max: 20,
+  windowMs: 5* 60 * 1000,
+  max: 5,
   standardHeaders: true,
   legacyHeaders: false,
-  message: { message: "Too many sign-up attempts. Please try again later." },
+  message: { message: "Too many sign-up attempts. Please try again 5 minutes later." },
 });
 
 const loginLimiter = rateLimit({
-  windowMs: 10 * 60 * 1000,
-  max: 10,
+  windowMs: 5 * 60 * 1000,
+  max: 5,
   standardHeaders: true,
   legacyHeaders: false,
-  message: { message: "Too many login attempts. Please try again later." },
+  message: { message: "Too many login attempts. Please try again 5 minutes later." },
 });
 
 // ===== Routes =====
 router.post("/register", registerLimiter, authController.register);
 router.post("/login", loginLimiter, authController.login);
-router.get("/refresh", authController.refresh);
+router.post("/refresh", authController.refresh);
+
 router.post("/logout", authController.logout);
 
 module.exports = router;
