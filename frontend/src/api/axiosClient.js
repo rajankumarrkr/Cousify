@@ -1,7 +1,7 @@
 import axios from "axios";
-
+console.log("API URL",import.meta.env.VITE_API_URL)
 const axiosClient = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true, // Important for cookies (refresh token)
 });
 

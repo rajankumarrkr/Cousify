@@ -8,20 +8,23 @@ require("dotenv").config();
 const courseRoutes = require("./routes/courseRoutes");
 const authRoutes = require("./routes/authRoutes");
 
+
 const app = express();
+
+// CORS (important for refresh token cookie)
+app.use(
+  cors({
+    origin:process.env.CLIENT_URL,
+    credentials: true,                // cookies allow
+  })
+);
 
 // ----- Global middlewares -----
 app.use(helmet());               // security headers
 app.use(express.json());         // JSON body parser
 app.use(cookieParser());         // read/write cookies
 
-// CORS (important for refresh token cookie)
-app.use(
-  cors({
-    origin: ["http://localhost:5173"], // apna React frontend origin
-    credentials: true,                // cookies allow
-  })
-);
+
 
 // ----- Routes -----
 app.use("/api/auth", authRoutes);
