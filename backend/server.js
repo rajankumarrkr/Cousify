@@ -8,6 +8,8 @@ require("dotenv").config();
 const courseRoutes = require("./routes/courseRoutes");
 const authRoutes = require("./routes/authRoutes");
 
+console.log("Client url",process.env.CLIENT_URL)
+
 
 const app = express();
 
